@@ -1,0 +1,42 @@
+{
+  "name": "probot-rfc-labeler",
+  "version": "1.1.0",
+  "description": "A GitHub App built with Probot that labels RFC Pull Requests after a period of inactivity for lazy consensus.",
+  "author": "Mikael Brevik <@mikaelbr>",
+  "license": "ISC",
+  "homepage": "https://github.com/AtB-AS/probot-rfc-labeler",
+  "bugs": "https://github.com/AtB-AS/probot-rfc-labeler/issues",
+  "keywords": [
+    "probot",
+    "github",
+    "probot-app",
+    "rfc",
+    "lazy consensus",
+    "labeler"
+  ],
+  "repository": "https://github.com/AtB-AS/probot-rfc-labeler",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc && (tsc -w --preserveWatchOutput & nodemon)",
+    "dev": "npm run build:watch",
+    "start": "probot run ./index.js",
+    "dryrun": "DRY_RUN=true probot run ./index.js"
+  },
+  "dependencies": {
+    "@hapi/joi": "^17.1.0",
+    "@octokit/rest": "^16.43.1",
+    "@octokit/webhooks": "^7.1.0",
+    "probot": "9.9.4",
+    "probot-scheduler": "^1.2.0"
+  },
+  "engines": {
+    "node": "^8.9",
+    "npm": "^5.6"
+  },
+  "devDependencies": {
+    "@types/hapi__joi": "^16.0.11",
+    "@types/node": "^13.7.4",
+    "smee-client": "^1.1.0",
+    "typescript": "^3.7.5"
+  }
+}
