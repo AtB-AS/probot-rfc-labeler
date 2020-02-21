@@ -33,7 +33,7 @@
     "probot-serverless-now": "^2.1.2"
   },
   "engines": {
-    "node": "^12.0",
+    "node": ">=12.0",
     "npm": "^5.6"
   },
   "devDependencies": {
