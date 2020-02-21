@@ -19,15 +19,15 @@
     "build": "tsc",
     "build:watch": "tsc && (tsc -w --preserveWatchOutput & nodemon)",
     "dev": "npm run build:watch",
-    "start": "probot run ./index.js",
-    "dryrun": "DRY_RUN=true probot run ./index.js"
+    "start": "probot run ./lib/index.js",
+    "dryrun": "DRY_RUN=true probot run ./lib/index.js"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.0",
-    "@octokit/rest": "^16.43.1",
+    "@octokit/rest": "^17.0.0",
     "@octokit/webhooks": "^7.1.0",
     "probot": "9.9.4",
-    "probot-scheduler": "^1.2.0"
+    "probot-scheduler": "^2.0.0-beta.1"
   },
   "engines": {
     "node": "^8.9",
@@ -38,6 +38,6 @@
     "@types/node": "^13.7.4",
     "nodemon": "^2.0.2",
     "smee-client": "^1.1.0",
-    "typescript": "^3.7.5"
+    "typescript": "^3.8.2"
   }
 }

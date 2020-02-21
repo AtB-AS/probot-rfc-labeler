@@ -13,6 +13,7 @@
 # The list of events the GitHub App subscribes to.
 # Uncomment the event names below to enable them.
 default_events:
+  - issue_comment
   - pull_request
   - pull_request_review
   - pull_request_review_comment
@@ -40,7 +41,7 @@ default_permissions:
 
   # Issues and related comments, assignees, labels, and milestones.
   # https://developer.github.com/v3/apps/permissions/#permission-on-issues
-  # issues: write
+  issues: write
 
   # Search repositories, list collaborators, and access repository metadata.
   # https://developer.github.com/v3/apps/permissions/#metadata-permissions
@@ -82,13 +83,18 @@ default_permissions:
   # https://developer.github.com/v3/apps/permissions/
   # organization_administration: read
 # The name of the GitHub App. Defaults to the name specified in package.json
-# name: My Probot App
+name: rfc-labeler
 
 # The homepage of your GitHub App.
-# url: https://example.com/
+url: https://github.com/AtB-AS/probot-rfc-labeler
 
 # A description of the GitHub App.
-# description: A description of my awesome app
+description: >
+  If you do an open RFC repo with lazy consensus it's handy to have some sort
+  of mechanism for reminding you that an RFC has reached consensus. This is that mechanism.
+
+  After 5 days (configurable) it is marked as `timedout`, which means it should be
+  merged. Or that someone should do one last check.
 
 # Set to true when your GitHub App is available to the public or false when it is only accessible to the owner of the app.
 # Default: true

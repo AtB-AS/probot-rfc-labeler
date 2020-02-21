@@ -39,13 +39,13 @@ onlyLabels:
 exemptAssignees: false
 
 # Label to use when marking as timed out (consensus reached)
-timeoutLabel: timedout
+timeoutLabel: consensus
 
 # Comment to post when marking as stale. Set to `false` to disable
 markComment: >
-  Is this RFC ready to be merged? If so, what is blocking it?
-  This issue has been automatically marked as timedout
-  because it has not had recent activity. It should be closed or merged.
+  Has this RFC reached consensus?
+  The consesus time has come and has automatically been marked with the `consensus` label
+  It should be closed or merged.
 
 # Comment to post when removing the stale label.
 # unmarkComment: >
@@ -61,7 +61,7 @@ To avoid triggering abuse prevention mechanisms on GitHub, only 30 issues and pu
 
 ## How long will it take?
 
-The app runs on a scheduled basis and in batches in order to avoid hitting rate limit ceilings.
+The app runs on a scheduled basis and in batches to avoid hitting rate limit ceilings.
 
 This means that even after you initially install the GitHub configuration and add the `rfc-labeler.yml` file, you may not see it act immediately.
 
@@ -69,7 +69,7 @@ If the bot doesn't run within 24 hours of initial setup, feel free to [open an i
 
 ## Why no auto merging?
 
-The author feels having auto-merging would lead to lack of control and higher risk of something passing that shouldn't be. Also it makes it harder to handle things like vacation etc.
+The author feels having auto-merging would lead to a lack of control and a higher risk of something passing that shouldn't be. Also, it makes it harder to handle things like vacation etc.
 
 ## Deployment
 

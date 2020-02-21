@@ -78,12 +78,11 @@ const schema = Joi.object<SchemaType>().keys({
   daysUntilTimeout: fields.daysUntilTimeout.default(5),
   onlyLabels: fields.onlyLabels.default(["rfc"]),
   exemptLabels: fields.exemptLabels.default(["wip", "elevated"]),
-  timeoutLabel: fields.timeoutLabel.default("timedout"),
+  timeoutLabel: fields.timeoutLabel.default("consensus"),
   markComment: fields.markComment.default(
-    "Is this RFC ready to be merged? If so, what is blocking it? " +
-      "\n\nThis issue has been automatically marked as timedout " +
-      "because it has not had recent activity. " +
-      "It should be closed or merged."
+    "Has this RFC reached consensus?" +
+      "\n\nThe consesus time has come and has automatically been marked with the `consensus` label. " +
+      "This RFC should be changed, closed or merged."
   ),
   exemptAssignees: fields.unmarkComment.default(false),
   unmarkComment: fields.unmarkComment.default(false),

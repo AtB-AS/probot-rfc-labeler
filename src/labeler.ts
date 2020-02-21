@@ -13,13 +13,10 @@ export default class Labeler {
   github: GitHubAPI;
   logger: Console;
   remainingActions: number;
+  config: LabelerOptions;
 
-  config: SchemaType;
-
-  constructor(
-    github: GitHubAPI,
-    { owner, repo, logger = console, ...config }: LabelerOptions
-  ) {
+  constructor(github: GitHubAPI, opts: LabelerOptions) {
+    const { logger, ...config } = opts;
     this.github = github;
     this.logger = logger;
     this.remainingActions = 0;
@@ -27,15 +24,14 @@ export default class Labeler {
     const { error, value } = schema.validate(config);
 
     this.config = value;
+    const { owner, repo } = this.config;
 
     if (error) {
-      logger.warn(
+      this.logger.warn(
         { err: new Error(error.message), owner, repo },
         "Invalid config"
       );
     }
-
-    Object.assign(this.config, { owner, repo });
   }
 
   async doMark() {
@@ -106,6 +102,16 @@ export default class Labeler {
     const markComment = this.config.markComment;
     const number = issue.number;
 
+    if (this.hasExemptLabel(issue)) {
+      this.logger.info(
+        "%s/%s#%d issue has exempt label, not adding label",
+        owner,
+        repo,
+        number
+      );
+      return;
+    }
+
     if (perform) {
       this.logger.info("%s/%s#%d is being marked", owner, repo, number);
       if (markComment) {
@@ -149,13 +155,13 @@ export default class Labeler {
         await this.github.issues.createComment({
           owner,
           repo,
-          number,
+          issue_number: number,
           body: unmarkComment
         });
       }
 
       return this.github.issues
-        .removeLabel({ owner, repo, number, name: timeoutLabel })
+        .removeLabel({ owner, repo, issue_number: number, name: timeoutLabel })
         .catch(err => {
           // ignore if it's a 404 because then the label was already removed
           if (err.code !== 404) {
@@ -196,7 +202,7 @@ export default class Labeler {
           owner,
           repo,
           name: timeoutLabel,
-          color: "ff0000"
+          color: "A2AD00"
         });
       });
   }

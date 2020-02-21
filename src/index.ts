@@ -8,12 +8,15 @@ type PullCollectionType =
   | Webhooks.WebhookPayloadPullRequestPullRequest
   | Octokit.PullsGetResponse;
 
-export default async (app: Application) => {
+export = async (app: Application) => {
   // Visit all repositories to mark and sweep stale issues
-  const scheduler = createScheduler(app);
+  const scheduler = createScheduler(app, {
+    delay: false
+  });
 
   // Unmark stale issues if a user comments
   const events = [
+    "issue_comment",
     "pull_request",
     "pull_request_review",
     "pull_request_review_comment"
@@ -31,11 +34,11 @@ export default async (app: Application) => {
   async function unmark(context: Context<Webhooks.WebhookPayloadPullRequest>) {
     if (!context.isBot) {
       const labeler = await forRepository(context);
-      let pr: PullCollectionType = context.payload.pull_request;
+      let pr: PullCollectionType =
+        context.payload.pull_request ?? (context.payload as any).issue;
 
       // Some payloads don't include labels
       if (!pr.labels) {
-        context.github.pulls;
         try {
           pr = (await context.github.pulls.get(context.issue()))
             .data as Octokit.PullsGetResponse;
