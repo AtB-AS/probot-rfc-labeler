@@ -16,9 +16,9 @@
   ],
   "repository": "https://github.com/AtB-AS/probot-rfc-labeler",
   "scripts": {
-    "build:site": "mkdir public && echo 'Hello World' > public/index.html",
-    "now-build": "npm run build:site && npm run build",
-    "build": "build:site && tsc",
+    "build-site": "mkdir public && echo 'Hello World' > public/index.html",
+    "now-build": "npm run build-site && npm run build",
+    "build": "tsc",
     "build:watch": "tsc && (tsc -w --preserveWatchOutput & nodemon)",
     "dev": "npm run build:watch",
     "start": "probot run ./lib/index.js",
