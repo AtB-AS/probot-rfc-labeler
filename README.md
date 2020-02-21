@@ -6,9 +6,9 @@ Based on the [Probot Stale App](https://probot.github.io/apps/stale/).
 
 ---
 
-If you do an open RFC repo with [lazy consensus](https://github.com/AtB-AS/org/blob/master/VOTING.md#lazy-consensus-timeout) it's good to have some sort of mechanism for reminding you that a RFC has reached consensus. This is that mechanism.
+If you do an open RFC repo with [lazy consensus](https://github.com/AtB-AS/org/blob/master/VOTING.md#lazy-consensus-timeout) it's good to have some sort of mechanism for reminding you that an RFC has reached consensus. This is that mechanism.
 
-After 5 days (configurable) it is marked as timedout, which means it should be merged. Or that someone should do one last check.
+After 5 days (configurable) it is marked as `consensus`, which means it should be merged. Or that someone should do one last check.
 
 ---
 
