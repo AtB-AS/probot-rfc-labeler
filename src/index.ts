@@ -9,6 +9,8 @@ type PullCollectionType =
   | Octokit.PullsGetResponse;
 
 export = async (app: Application) => {
+  app.log.info("Starting probot");
+
   // Visit all repositories to mark and sweep stale issues
   const scheduler = createScheduler(app, {
     delay: false
