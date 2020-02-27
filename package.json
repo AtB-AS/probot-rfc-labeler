@@ -16,11 +16,8 @@
   ],
   "repository": "https://github.com/AtB-AS/probot-rfc-labeler",
   "scripts": {
-    "build-site": "mkdir public && echo 'Hello World' > public/index.html",
-    "now-build": "npm run build-site && npm run build",
-    "build": "tsc",
+    "now-build": "mkdir -p public && echo 'Hello World' > public/index.html",
     "build:watch": "tsc && (tsc -w --preserveWatchOutput & nodemon)",
-    "dev": "npm run build:watch",
     "start": "probot run ./lib/index.js",
     "dryrun": "DRY_RUN=true probot run ./lib/index.js"
   },
@@ -29,7 +26,7 @@
     "@now/node": "^1.4.1",
     "@octokit/rest": "^17.0.0",
     "@octokit/webhooks": "^7.1.0",
-    "probot": "9.9.4",
+    "probot": "9.9.6",
     "probot-scheduler": "^2.0.0-beta.1",
     "probot-serverless-now": "^2.1.2"
   },
@@ -38,8 +35,8 @@
     "npm": "^5.6"
   },
   "devDependencies": {
-    "@types/hapi__joi": "^16.0.11",
-    "@types/node": "^13.7.4",
+    "@types/hapi__joi": "^16.0.12",
+    "@types/node": "^13.7.6",
     "nodemon": "^2.0.2",
     "smee-client": "^1.1.0",
     "typescript": "^3.8.2"
